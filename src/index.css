@@ -13,6 +13,13 @@ body {
   min-height: 100vh;
 }
 
+.container {
+  width: 50vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
@@ -30,19 +37,65 @@ button {
   transition: border-color 0.25s;
 }
 
-label {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
+/*---------- IPUT CONTAINER ----------*/
+.input-box {
+  position: relative;
 }
 
-.user-icon {
+.input-box input {
+  padding: 5px;
+}
+
+.input-box input::placeholder {
+  color: #ff9705;
+}
+/*-------------------------------------*/
+
+/*------- LOGINS ICON POSITIONS -------*/
+.input-box .login-pic {
+  position: absolute;
+  right: 10%;
+  top: 17%;
+}
+
+.login-lock-icon {
+  position: absolute;
+  right: 10%;
+  top: 26%;
+}
+/*-------------------------------------*/
+/*---- REGISTRATION ICON POSITIONS ----*/
+.email-icon {
+  position: absolute;
+  right: 10%;
+  top: 20%;
+}
+
+.reg-user-icon {
+  position: absolute;
+  right: 10%;
+  top: 25%;
+}
+
+.password-lock-icon {
+  position: absolute;
+  right: 10%;
+  top: 25%;
+}
+/*-------------------------------------*/
+/*---------- ICON COLOR FILL ----------*/
+.reg-user-icon,
+.login-pic {
   color: green;
 }
-.lock-icon {
+.password-lock-icon,
+.login-lock-icon {
   color: red;
 }
+.email-icon {
+  color: rgb(98, 153, 174);
+}
+/*-------------------------------------*/
 
 button:hover {
   border-color: #ff9705;

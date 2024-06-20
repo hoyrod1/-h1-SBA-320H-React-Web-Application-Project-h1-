@@ -5,9 +5,12 @@ import LoginRegister from "./Registerlogin/LoginRegister.jsx";
 function App() {
   return (
     <>
+      <hr />
       <div className="card">
         <LoginRegister />
       </div>
+
+      <hr />
     </>
   );
 }
