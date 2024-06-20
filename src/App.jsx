@@ -1,16 +1,12 @@
-import { useState } from "react";
 import "./App.css";
+import Dogs from "./dogs/Dogs";
+import LoginRegister from "./Registerlogin/LoginRegister.jsx";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
     <>
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <h1>SBA-320H-React-Web-Application-Project</h1>
+        <LoginRegister />
       </div>
     </>
   );
