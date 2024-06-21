@@ -6,36 +6,36 @@ import { SlEnvolope } from "react-icons/sl";
 
 //======================== REGULAR EXPRESSION ========================//
 // EMAIL REGEX
-const email_validation = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
-// USERNAME REGEX
-const username_validation =
-  /^(?=.*?[0-9])(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[^0-9A-Za-z]).{8,24}$/;
-// PASSWORD REGEX
-const password_validation = /^[a-zA-Z][A-Za-z0-9-_]{12,18}$/;
+// const email_validation = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
+// // USERNAME REGEX
+// const username_validation =
+//   /^(?=.*?[0-9])(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[^0-9A-Za-z]).{8,24}$/;
+// // PASSWORD REGEX
+// const password_validation = /^[a-zA-Z][A-Za-z0-9-_]{12,18}$/;
 //====================================================================//
 
 //=================== LOGIN-REGISTRATION COMPONENT ===================//
 const LoginRegister = () => {
   // PLACES FOCUS ON THE INPUT WHEN THE COMPONENT LOADS
-  const usersRef = useRef();
-  // KEEPS TRACK OF ERRORS THAT OCCURS
-  const errorrRef = useRef();
+  // const usersRef = useRef();
+  // // KEEPS TRACK OF ERRORS THAT OCCURS
+  // const errorrRef = useRef();
   //====================================================================//
 
   //=========================== LOGIN STATE ============================//
   // STATE FOR USERNAME INPUT
   const [loginUser, setLoginUser] = useState("");
   // STATE TO KEEP TRACK IF USERNAME VALIDATES OR NOT
-  const [validuserLoginName, setValiduserLoginName] = useState(false);
-  // STATE TO DETERMINE IF THE USERNAME FIELD HAS FOCUS
-  const [LoginUserNameFocus, setLoginUserNameFocus] = useState(false);
+  // const [validuserLoginName, setValiduserLoginName] = useState(false);
+  // // STATE TO DETERMINE IF THE USERNAME FIELD HAS FOCUS
+  // const [LoginUserNameFocus, setLoginUserNameFocus] = useState(false);
   //==================== PASSWORD STATE =====================//
   // STATE FOR PASSWORD INPUT
   const [loginPassword, setLoginPassword] = useState("");
   // STATE TO KEEP TRACK IF PASSWORD VALIDATES OR NOT
-  const [validLoginPwd, setValidLoginPwd] = useState(false);
-  // STATE TO DETERMINE IF THE PASSWORD FIELD HAS FOCUS
-  const [pwdLoginFocus, setLoginPwdFocus] = useState(false);
+  // const [validLoginPwd, setValidLoginPwd] = useState(false);
+  // // STATE TO DETERMINE IF THE PASSWORD FIELD HAS FOCUS
+  // const [pwdLoginFocus, setLoginPwdFocus] = useState(false);
   //====================================================================//
 
   //====================================================================//
@@ -43,69 +43,87 @@ const LoginRegister = () => {
   // STATE FOR EMAIL INPUT
   const [registerEmail, setRegisterEmail] = useState("");
   // STATE TO KEEP TRACK IF EMAIL VALIDATES OR NOT
-  const [registerValidEmail, setValidRegisterEmail] = useState(false);
-  // STATE TO DETERMINE IF THE EMAIL FIELD HAS FOCUS
-  const [registerEmailFocus, setRegisterEmailFocus] = useState(false);
+  // const [registerValidEmail, setValidRegisterEmail] = useState(false);
+  // // STATE TO DETERMINE IF THE EMAIL FIELD HAS FOCUS
+  // const [registerEmailFocus, setRegisterEmailFocus] = useState(false);
   //=========================================================//
   // STATE FOR USERNAME INPUT
   const [registerUser, setRegisterUser] = useState("");
   // STATE TO KEEP TRACK IF USERNAME VALIDATES OR NOT
-  const [registerValiduserName, setValidRegisterUserName] = useState(false);
-  // STATE TO DETERMINE IF THE USERNAME FIELD HAS FOCUS
-  const [registerUserNameFocus, setRegisterUserNameFocus] = useState(false);
+  // const [registerValiduserName, setValidRegisterUserName] = useState(false);
+  // // STATE TO DETERMINE IF THE USERNAME FIELD HAS FOCUS
+  // const [registerUserNameFocus, setRegisterUserNameFocus] = useState(false);
   //=========================================================//
   // STATE FOR PASSWORD INPUT
   const [registerPassword, setRegisterPassword] = useState("");
   // STATE TO KEEP TRACK IF PASSWORD VALIDATES OR NOT
-  const [registerValidPwd, setValidRegisterPwd] = useState(false);
-  // STATE TO DETERMINE IF THE PASSWORD FIELD HAS FOCUS
-  const [registerPwdFocus, setRegisterPwdFocus] = useState(false);
+  // const [registerValidPwd, setValidRegisterPwd] = useState(false);
+  // // STATE TO DETERMINE IF THE PASSWORD FIELD HAS FOCUS
+  // const [registerPwdFocus, setRegisterPwdFocus] = useState(false);
   //================ CONFIRM-PASSWORD STATE =================//
   // STATE FOR CONFIRM-PASSWORD INPUT
   const [matchRegisterPassword, setMatchRegisterPassword] = useState("");
   // STATE TO KEEP TRACK IF CONFIRM-PASSWORD MATCHES OR NOT
-  const [validMatchRegisterPwd, setValidMatchRegisterPwd] = useState(false);
-  // STATE TO DETERMINE IF THE CONFIRM-PASSWORD FIELD HAS FOCUS
-  const [registerPwdMatchFocus, setRegisterPwdMatchFocus] = useState(false);
+  // const [validMatchRegisterPwd, setValidMatchRegisterPwd] = useState(false);
+  // // STATE TO DETERMINE IF THE CONFIRM-PASSWORD FIELD HAS FOCUS
+  // const [registerPwdMatchFocus, setRegisterPwdMatchFocus] = useState(false);
   //=========================================================//
 
   //================= ERR0R-SUCCESS STATE ===================//
-  const [errorMessage, setErrorMessage] = useState("");
+  const [loginMessage, setLoginMessage] = useState("");
   const [loginSuccess, setLoginSuccess] = useState(false);
+  const [registrationSuccess, setRegistrationSuccess] = useState(false);
   //=========================================================//
-  // SET FOCUS WHEN COMPONENT LOADS
-  // useEffect(() => {
-  //   useRef.current.focus();
-  // }, []);
-  // // SET FOCUS WHEN COMPONENT LOADS
-  // useEffect(() => {
-  //   useRef.current.focus();
-  // }, []);
 
   //=============================== FORM SUBMISSION ===============================//
   // login form
   const handleLoginSubmission = (e) => {
     e.preventDefault();
+    const storedPassword = localStorage.getItem("password");
 
-    setErrorMessage("");
+    setLoginMessage("");
     try {
-      if (loginUser === "hoyrod1" && loginPassword === "april12") {
+      if (loginPassword === storedPassword) {
         setLoginSuccess(true);
       } else {
         throw Error;
       }
     } catch (error) {
-      console.error("Login unsuccessful", loginSuccess);
-      setErrorMessage("Incorrect credintials");
+      setLoginMessage("Incorrect credintials");
       setLoginUser("");
       setLoginPassword("");
     }
-    // console.log("Login successful", success);
+    setLoginUser("");
+    setLoginPassword("");
   };
+  //------------------------------------------------------------------------------//
   // Registration Form
   const handleRegistrationSubmission = (e) => {
     e.preventDefault();
-    console.log("Registration Form Submitted");
+    //setRegistrationSuccess("");
+
+    try {
+      if (registerPassword === registerPassword) {
+        // Storing the email to local storage
+        localStorage.setItem("email", registerEmail);
+        // Storing the username to local storage
+        localStorage.setItem("username", registerUser);
+        // Storing the password to local storage
+        localStorage.setItem("password", registerPassword);
+        // setRegisterEmail("");
+        // setRegisterUser("");
+        // setRegisterPassword("");
+        // setMatchRegisterPassword("");
+      } else {
+        throw Error;
+      }
+    } catch (error) {
+      setRegistrationSuccess("Registration unsuccessful");
+      setRegisterEmail("");
+      setRegisterUser("");
+      setRegisterPassword("");
+      setMatchRegisterPassword("");
+    }
   };
   //===============================================================================//
 
@@ -116,7 +134,7 @@ const LoginRegister = () => {
         <>
           <div className="logged-container">
             <div>
-              <h2>{loginUser} you are logged in</h2>
+              <h3>{loginUser} you are logged in</h3>
             </div>
             <br />
             <button type="submit" onClick={() => setLoginSuccess(false)}>
@@ -150,13 +168,8 @@ const LoginRegister = () => {
                 <FaLock className="login-lock-icon" />
               </div>
               <button type="submit">Login</button>
-              <div className="register-link">
-                <p>
-                  Don't have an account? <a href="#">Register</a>
-                </p>
-              </div>
               <div className="error-message">
-                <p>{errorMessage}</p>
+                <p>{loginMessage}</p>
               </div>
             </form>
           </div>
@@ -205,10 +218,8 @@ const LoginRegister = () => {
                 <FaLock className="password-lock-icon" />
               </div>
               <button type="submit">Register</button>
-              <div className="login-link">
-                <p>
-                  Already have an account? <a href="#">Login</a>
-                </p>
+              <div className="error-message">
+                <p>{registrationSuccess}</p>
               </div>
             </form>
           </div>

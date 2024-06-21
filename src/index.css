@@ -122,3 +122,7 @@ a:hover {
     background-color: #f4d6bf;
   }
 }
+
+.error-message {
+  color: red;
+}
