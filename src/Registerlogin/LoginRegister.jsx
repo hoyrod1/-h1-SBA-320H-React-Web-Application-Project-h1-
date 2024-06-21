@@ -2,71 +2,31 @@ import React from "react";
 import { useState, useRef, useEffect } from "react";
 import { FaUser, FaLock } from "react-icons/fa";
 import { SlEnvolope } from "react-icons/sl";
-// import "./loginRegister.css";
-
-//======================== REGULAR EXPRESSION ========================//
-// EMAIL REGEX
-// const email_validation = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
-// // USERNAME REGEX
-// const username_validation =
-//   /^(?=.*?[0-9])(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[^0-9A-Za-z]).{8,24}$/;
-// // PASSWORD REGEX
-// const password_validation = /^[a-zA-Z][A-Za-z0-9-_]{12,18}$/;
-//====================================================================//
+import Dogs from "../dogs/Dogs";
 
 //=================== LOGIN-REGISTRATION COMPONENT ===================//
 const LoginRegister = () => {
-  // PLACES FOCUS ON THE INPUT WHEN THE COMPONENT LOADS
-  // const usersRef = useRef();
-  // // KEEPS TRACK OF ERRORS THAT OCCURS
-  // const errorrRef = useRef();
-  //====================================================================//
-
   //=========================== LOGIN STATE ============================//
   // STATE FOR USERNAME INPUT
   const [loginUser, setLoginUser] = useState("");
-  // STATE TO KEEP TRACK IF USERNAME VALIDATES OR NOT
-  // const [validuserLoginName, setValiduserLoginName] = useState(false);
-  // // STATE TO DETERMINE IF THE USERNAME FIELD HAS FOCUS
-  // const [LoginUserNameFocus, setLoginUserNameFocus] = useState(false);
   //==================== PASSWORD STATE =====================//
   // STATE FOR PASSWORD INPUT
   const [loginPassword, setLoginPassword] = useState("");
-  // STATE TO KEEP TRACK IF PASSWORD VALIDATES OR NOT
-  // const [validLoginPwd, setValidLoginPwd] = useState(false);
-  // // STATE TO DETERMINE IF THE PASSWORD FIELD HAS FOCUS
-  // const [pwdLoginFocus, setLoginPwdFocus] = useState(false);
   //====================================================================//
 
   //====================================================================//
   //======================== REGISTRATION STATE ========================//
   // STATE FOR EMAIL INPUT
   const [registerEmail, setRegisterEmail] = useState("");
-  // STATE TO KEEP TRACK IF EMAIL VALIDATES OR NOT
-  // const [registerValidEmail, setValidRegisterEmail] = useState(false);
-  // // STATE TO DETERMINE IF THE EMAIL FIELD HAS FOCUS
-  // const [registerEmailFocus, setRegisterEmailFocus] = useState(false);
   //=========================================================//
   // STATE FOR USERNAME INPUT
   const [registerUser, setRegisterUser] = useState("");
-  // STATE TO KEEP TRACK IF USERNAME VALIDATES OR NOT
-  // const [registerValiduserName, setValidRegisterUserName] = useState(false);
-  // // STATE TO DETERMINE IF THE USERNAME FIELD HAS FOCUS
-  // const [registerUserNameFocus, setRegisterUserNameFocus] = useState(false);
   //=========================================================//
   // STATE FOR PASSWORD INPUT
   const [registerPassword, setRegisterPassword] = useState("");
-  // STATE TO KEEP TRACK IF PASSWORD VALIDATES OR NOT
-  // const [registerValidPwd, setValidRegisterPwd] = useState(false);
-  // // STATE TO DETERMINE IF THE PASSWORD FIELD HAS FOCUS
-  // const [registerPwdFocus, setRegisterPwdFocus] = useState(false);
   //================ CONFIRM-PASSWORD STATE =================//
   // STATE FOR CONFIRM-PASSWORD INPUT
   const [matchRegisterPassword, setMatchRegisterPassword] = useState("");
-  // STATE TO KEEP TRACK IF CONFIRM-PASSWORD MATCHES OR NOT
-  // const [validMatchRegisterPwd, setValidMatchRegisterPwd] = useState(false);
-  // // STATE TO DETERMINE IF THE CONFIRM-PASSWORD FIELD HAS FOCUS
-  // const [registerPwdMatchFocus, setRegisterPwdMatchFocus] = useState(false);
   //=========================================================//
 
   //================= ERR0R-SUCCESS STATE ===================//
@@ -110,10 +70,10 @@ const LoginRegister = () => {
         localStorage.setItem("username", registerUser);
         // Storing the password to local storage
         localStorage.setItem("password", registerPassword);
-        // setRegisterEmail("");
-        // setRegisterUser("");
-        // setRegisterPassword("");
-        // setMatchRegisterPassword("");
+        setRegisterEmail("");
+        setRegisterUser("");
+        setRegisterPassword("");
+        setMatchRegisterPassword("");
       } else {
         throw Error;
       }
@@ -140,6 +100,8 @@ const LoginRegister = () => {
             <button type="submit" onClick={() => setLoginSuccess(false)}>
               Log Out
             </button>
+            <hr />
+            <Dogs />
           </div>
         </>
       ) : (
